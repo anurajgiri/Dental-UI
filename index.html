@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="shine Dental - Premium Dental Care for a perfect shine. World-class dental care with a gentle touch.">
-    <meta property="og:title" content="shine Dental | Your Perfect shine Starts Here">
+    <meta name="description" content="Smile Dental - Premium Dental Care for a perfect smile. World-class dental care with a gentle touch.">
+    <meta property="og:title" content="Smile Dental | Your Perfect Smile Starts Here">
     <meta property="og:description" content="Premium dental services including whitening, implants, and orthodontics.">
-    <title>shine Dental | Your Perfect shine Starts Here</title>
+    <title>Smile Dental | Your Perfect Smile Starts Here</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
     <!-- Page Loader -->
     <div id="loader" class="loader-overlay">
         <div class="loader-content">
-            <h2 class="loader-logo">Pure<span class="teal">shine</span></h2>
+            <h2 class="loader-logo">Smile<span class="teal">✦</span>Dental</h2>
             <div class="loader-progress-container">
                 <div class="loader-progress-bar"></div>
             </div>
@@ -42,8 +42,8 @@
 
     <!-- Navigation -->
     <nav id="main-nav">
-        <div class="container nav-container">
-            <a href="#" class="logo">Pure<span class="diamond">✦</span>shine</a>
+        <div class="nav-container">
+            <a href="#" class="logo">Smile<span class="diamond">✦</span>Dental</a>
             
             <div class="nav-links">
                 <a href="#hero" class="nav-link active">Home</a>
@@ -53,7 +53,7 @@
                 <a href="#booking" class="cta-btn-small">Book Now</a>
             </div>
 
-            <button class="hamburger" aria-label="Toggle Menu">
+            <button class="hamburger" type="button" aria-label="Toggle Menu">
                 <span></span>
                 <span></span>
             </button>
@@ -61,23 +61,23 @@
         
         <!-- Mobile Menu Drawer -->
         <div class="nav-mobile-menu">
-            <!-- <div class="mobile-links">
-                <a href="#hero">Home</a>
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#booking">Booking</a>
-                <a href="#booking" class="cta-pill-warm">Book Appointment</a>
-            </div> -->
+            <div class="mobile-links">
+                <a href="#hero" class="mobile-link">Home</a>
+                <a href="#services" class="mobile-link">Services</a>
+                <a href="#about" class="mobile-link">About</a>
+                <a href="#booking" class="mobile-link">Booking</a>
+            </div>
         </div>
+
     </nav>
 
     <main>
         <!-- Hero Section -->
         <section id="hero">
-            <div class="container hero-container">
+            <div class="hero-container">
                 <div class="hero-text">
                     <span class="badge">✦ Premium Dental Care</span>
-                    <h1>Your Perfect shine Starts Here</h1>
+                    <h1>Your Perfect Smile Starts Here</h1>
                     <p>World-class dental care with a gentle touch. Serving patients with excellence since 2008.</p>
                     <div class="hero-actions">
                         <a href="#booking" class="cta-pill-teal magnetic">Book Appointment</a>
@@ -85,15 +85,17 @@
                     </div>
                     <div class="social-proof">
                         <div class="avatars">
-                            <div class="avatar"></div>
-                            <div class="avatar"></div>
-                            <div class="avatar"></div>
+                            <div class="avatar" style="background:#00C4A1"></div>
+                            <div class="avatar" style="background:#4A86D4"></div>
+                            <div class="avatar" style="background:#F4A261"></div>
                         </div>
                         <span>500+ happy patients</span>
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <canvas id="dental-canvas"></canvas>
+                  <div class="hero-img-frame">
+                    <img src="assets/hero-dental.jpg" class="hero-smile-img" alt="Dental care">
+                  </div>
                 </div>
             </div>
             <div class="scroll-indicator">
@@ -102,14 +104,12 @@
         </section>
 
         <!-- Services Section -->
-        <section id="services" class="section-padding">
+        <section id="services">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="reveal-text">What We Offer</h2>
-                    <p>Comprehensive dental care tailored to your needs</p>
-                </div>
+                <h2 class="section-title reveal-text">What We Offer</h2>
+                <p class="section-subtitle">Comprehensive dental care tailored to your needs</p>
+                
                 <div class="services-grid">
-                    <!-- Service Card 1 -->
                     <div class="service-card">
                         <div class="icon-circle">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4.5 10.13V5.5c0-.83.67-1.5 1.5-1.5h12c.83 0 1.5.67 1.5 1.5v4.63c0 .32.1.63.29.89l1.92 2.56c.19.26.29.57.29.89V18c0 1.1-.9 2-2 2h-1c-.55 0-1-.45-1-1v-2c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v2c0 .55-.45 1-1 1H5c-1.1 0-2-.9-2-2v-3.53c0-.32.1-.63.29-.89l1.92-2.56c.19-.26.29-.57.29-.89z"/></svg>
@@ -118,16 +118,14 @@
                         <p>Routine checkups and cleaning for optimal oral health.</p>
                         <a href="#" class="learn-more">Learn more →</a>
                     </div>
-                    <!-- Service Card 2 -->
                     <div class="service-card">
                         <div class="icon-circle">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
                         </div>
                         <h3>Teeth Whitening</h3>
-                        <p>Brighter, whiter shines with our professional whitening treatments.</p>
+                        <p>Brighter, whiter smiles with our professional whitening treatments.</p>
                         <a href="#" class="learn-more">Learn more →</a>
                     </div>
-                    <!-- Service Card 3 -->
                     <div class="service-card">
                         <div class="icon-circle">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v10h-2z"/></svg>
@@ -136,78 +134,47 @@
                         <p>Straighten your teeth with modern braces and invisible aligners.</p>
                         <a href="#" class="learn-more">Learn more →</a>
                     </div>
-                    <!-- Service Card 4 -->
-                    <div class="service-card">
-                        <div class="icon-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L15 5L12 8L9 5L12 2ZM12 22L9 19L12 16L15 19L12 22Z"/></svg>
-                        </div>
-                        <h3>Dental Implants</h3>
-                        <p>Permanent solutions for missing teeth that look and feel natural.</p>
-                        <a href="#" class="learn-more">Learn more →</a>
-                    </div>
-                    <!-- Service Card 5 -->
-                    <div class="service-card">
-                        <div class="icon-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/></svg>
-                        </div>
-                        <h3>Root Canal</h3>
-                        <p>Expert endodontic care to save your natural teeth.</p>
-                        <a href="#" class="learn-more">Learn more →</a>
-                    </div>
-                    <!-- Service Card 6 -->
-                    <div class="service-card">
-                        <div class="icon-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M13.5 6.5L17.5 10.5M2 22L5 21L18.5 7.5L16.5 5.5L3 19L2 22ZM21 4L20 3L18.5 4.5L19.5 5.5L21 4Z"/></svg>
-                        </div>
-                        <h3>Cosmetic Dentistry</h3>
-                        <p>Transform your shine with veneers, bonding, and more.</p>
-                        <a href="#" class="learn-more">Learn more →</a>
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="section-padding">
-            <div class="container about-container">
-                <div class="about-visual">
-                    <div class="about-image-wrapper parallax" data-speed="0.4">
-                        <div class="about-image-placeholder">
-                            <!-- Subtle tooth SVG pattern via CSS background -->
-                        </div>
-                    </div>
+        <section id="about">
+            <div class="about-grid">
+                <div class="about-image parallax" data-speed="0.2">
+                    <div style="font-size: 120px;">🏥</div>
                 </div>
                 <div class="about-content">
-                    <h2 class="reveal-text">20 Years of Trusted shines</h2>
-                    <div class="feature-rows">
-                        <div class="feature-row">
-                            <span class="feature-icon">✦</span>
-                            <p>Board-certified specialists with global training</p>
+                    <h2 class="reveal-text">20 Years of Trusted Dental Excellence</h2>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <span>✦</span>
+                            <div class="feature-text">Board-certified specialists with extensive global training and experience.</div>
                         </div>
-                        <div class="feature-row">
-                            <span class="feature-icon">✦</span>
-                            <p>Pain-free procedures with latest technology</p>
+                        <div class="feature-item">
+                            <span>✦</span>
+                            <div class="feature-text">Pain-free procedures using the latest state-of-the-art dental technology.</div>
                         </div>
-                        <div class="feature-row">
-                            <span class="feature-icon">✦</span>
-                            <p>Personalized care plans for every patient</p>
+                        <div class="feature-item">
+                            <span>✦</span>
+                            <div class="feature-text">Personalized care plans tailored specifically for every patient's unique needs.</div>
                         </div>
                     </div>
-                    <div class="team-mini-grid">
+                    <div class="doctors-row">
                         <div class="doctor-card">
-                            <div class="doctor-avatar"></div>
-                            <h4>Dr. Anuraj Giri</h4>
-                            <span>Senior Orthodontist</span>
+                            <div class="doctor-avatar">SJ</div>
+                            <h4>Dr. Sarah James</h4>
+                            <p>Orthodontist</p>
                         </div>
                         <div class="doctor-card">
-                            <div class="doctor-avatar"></div>
-                            <h4>Dr. Jhonwick</h4>
-                            <span>Implant Specialist</span>
+                            <div class="doctor-avatar">MC</div>
+                            <h4>Dr. Michael Chen</h4>
+                            <p>Implant Specialist</p>
                         </div>
                         <div class="doctor-card">
-                            <div class="doctor-avatar"></div>
-                            <h4>Dr. JHATKA</h4>
-                            <span>Cosmetic Dentist</span>
+                            <div class="doctor-avatar">ER</div>
+                            <h4>Dr. Elena Ross</h4>
+                            <p>Cosmetic Dentist</p>
                         </div>
                     </div>
                 </div>
@@ -215,196 +182,173 @@
         </section>
 
         <!-- Stats Section -->
-        <section id="stats" class="section-padding bg-navy">
-            <div class="container stats-container">
+        <section id="stats">
+            <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number" data-target="500">0</div>
-                    <div class="stat-label">Patients Served</div>
+                    <span class="stat-number" data-target="500">0</span>
+                    <span class="stat-label">Patients Served</span>
                 </div>
-                <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <div class="stat-number" data-target="20">0</div>
-                    <div class="stat-label">Years Experience</div>
+                    <span class="stat-number" data-target="20">0</span>
+                    <span class="stat-label">Years Experience</span>
                 </div>
-                <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <div class="stat-number" data-target="15">0</div>
-                    <div class="stat-label">Expert Doctors</div>
+                    <span class="stat-number" data-target="15">0</span>
+                    <span class="stat-label">Expert Doctors</span>
                 </div>
-                <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <div class="stat-number" data-target="98">0</div>
-                    <div class="stat-label">Satisfaction Rate</div>
+                    <span class="stat-number" data-target="98">0</span>
+                    <span class="stat-label">Satisfaction Rate</span>
                 </div>
             </div>
         </section>
 
         <!-- Process Section -->
-        <section id="process" class="section-padding">
+        <section id="process">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="reveal-text">Your Journey to a Perfect shine</h2>
-                </div>
-                <div class="process-wrapper">
-                    <svg class="process-line-svg" preserveAspectRatio="none">
-                        <path d="M0,50 Q250,50 500,50 T1000,50" fill="none" stroke="#00C4A1" stroke-width="2" stroke-dasharray="2000" stroke-dashoffset="2000"></path>
-                    </svg>
-                    <div class="process-steps">
-                        <div class="process-step">
-                            <div class="step-bg-number">01</div>
-                            <div class="step-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                            </div>
-                            <h4>Book Online</h4>
-                            <p>Choose your preferred date and time instantly.</p>
+                <h2 class="section-title reveal-text">Your Journey to a Perfect Smile</h2>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                         </div>
-                        <div class="process-step">
-                            <div class="step-bg-number">02</div>
-                            <div class="step-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                            </div>
-                            <h4>Consultation</h4>
-                            <p>Meet our experts for a detailed assessment.</p>
+                        <h4 class="step-title">Book Online</h4>
+                        <p class="step-desc">Choose your preferred date and time instantly via our portal.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                         </div>
-                        <div class="process-step">
-                            <div class="step-bg-number">03</div>
-                            <div class="step-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                            </div>
-                            <h4>Treatment</h4>
-                            <p>Advanced care using state-of-the-art tech.</p>
+                        <h4 class="step-title">Consultation</h4>
+                        <p class="step-desc">Meet our experts for a detailed assessment of your oral health.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
                         </div>
-                        <div class="process-step">
-                            <div class="step-bg-number">04</div>
-                            <div class="step-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                            </div>
-                            <h4>Perfect shine</h4>
-                            <p>Walk out with a confident, healthy shine.</p>
+                        <h4 class="step-title">Treatment</h4>
+                        <p class="step-desc">Receive advanced care using state-of-the-art dental tech.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">04</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                         </div>
+                        <h4 class="step-title">Perfect Smile</h4>
+                        <p class="step-desc">Walk out with a confident, healthy, and radiant smile.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="section-padding">
+        <section id="testimonials">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="reveal-text">What Our Patients Say</h2>
-                </div>
-                <div class="carousel-container">
-                    <div class="carousel-track">
+                <h2 class="section-title reveal-text">What Our Patients Say</h2>
+                <p class="section-subtitle">Read about the experiences of our happy patients</p>
+                <div class="testimonials-wrapper">
+                    <div class="testimonials-track">
                         <div class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p class="quote">"Exceptional care! The Three.js interactive features on the site reflect their modern approach in the clinic."</p>
-                            <div class="patient-info">
-                                <div class="patient-avatar"></div>
-                                <div>
-                                    <h4>Ram Thapa</h4>
-                                    <span>Verified Patient</span>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-quote">"Absolutely amazing experience. The team made me feel comfortable and my smile has never looked better."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">SW</div>
+                                <div class="author-info">
+                                    <div class="author-name">Sarah Wilson</div>
+                                    <div class="author-badge">Verified Patient</div>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p class="quote">"I've never felt more comfortable at a dentist. The team is professional and truly cares about your comfort."</p>
-                            <div class="patient-info">
-                                <div class="patient-avatar"></div>
-                                <div>
-                                    <h4>David Pradhan</h4>
-                                    <span>Verified Patient</span>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-quote">"I've never felt more comfortable at a dentist. The team is professional and truly cares about your comfort."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">DB</div>
+                                <div class="author-info">
+                                    <div class="author-name">David Brown</div>
+                                    <div class="author-badge">Verified Patient</div>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p class="quote">"Fantastic results with my whitening treatment. The process was explained clearly and the results are amazing."</p>
-                            <div class="patient-info">
-                                <div class="patient-avatar"></div>
-                                <div>
-                                    <h4>Yao Chen</h4>
-                                    <span>Verified Patient</span>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-quote">"Fantastic results with my whitening treatment. The process was explained clearly and the results are amazing."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">EC</div>
+                                <div class="author-info">
+                                    <div class="author-name">Emily Chen</div>
+                                    <div class="author-badge">Verified Patient</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-prev" aria-label="Previous">←</button>
-                        <button class="carousel-next" aria-label="Next">→</button>
+                    <div class="testimonials-nav">
+                        <button class="nav-btn carousel-prev">←</button>
+                        <button class="nav-btn carousel-next">→</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Booking Section -->
-        <section id="booking" class="section-padding">
-            <div class="container booking-container">
-                <div class="booking-form-wrapper">
-                    <h2 class="reveal-text">Book Your Appointment</h2>
+        <section id="booking">
+            <div class="booking-grid">
+                <div class="booking-form-container">
+                    <h2 class="booking-form-title reveal-text">Book Your Appointment</h2>
                     <form id="appointment-form">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Full Name" required>
-                            <label for="name">Full Name</label>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email Address" required>
-                            <label for="email">Email Address</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-                            <label for="phone">Phone Number</label>
-                        </div>
-                        <div class="form-group">
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Select Service</option>
-                                <option value="general">General Dentistry</option>
-                                <option value="whitening">Teeth Whitening</option>
-                                <option value="ortho">Orthodontics</option>
-                                <option value="implants">Dental Implants</option>
-                                <option value="rootcanal">Root Canal</option>
-                                <option value="cosmetic">Cosmetic Dentistry</option>
-                            </select>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                            </div>
+                            <div class="form-group">
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected>Select Service</option>
+                                    <option value="general">General Dentistry</option>
+                                    <option value="whitening">Teeth Whitening</option>
+                                    <option value="ortho">Orthodontics</option>
+                                    <option value="implants">Dental Implants</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <input type="date" id="date" name="date" required>
-                            <label for="date">Preferred Date</label>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" placeholder="How can we help?"></textarea>
-                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="How can we help?"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn magnetic">
+                        <button type="submit" class="btn-submit magnetic">
                             <span class="btn-text">Confirm Appointment</span>
-                            <div class="loader-spinner"></div>
-                            <div class="success-check">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
                         </button>
                     </form>
                 </div>
-                <div class="booking-info">
-                    <div class="info-card">
-                        <h3>Clinic Information</h3>
-                        <div class="info-item">
-                            <div class="info-icon">📍</div>
-                            <p>123 Dental Street, Wellness District, NY 10001</p>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon">📞</div>
-                            <p>(555) 123-4567</p>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon">📧</div>
-                            <p>hello@shine.com</p>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon">⏰</div>
-                            <p>Mon-Fri: 9am - 6pm<br>Sat: 10am - 2pm</p>
-                        </div>
+                <div class="clinic-info">
+                    <h3 class="clinic-info-title">Clinic Information</h3>
+                    <div class="clinic-info-item">
+                        <div class="clinic-info-icon">📍</div>
+                        <div class="clinic-info-text">123 Dental Street, Wellness District, NY 10001</div>
                     </div>
-                    <div class="map-placeholder">
-                        <div class="map-overlay">Map Preview</div>
+                    <div class="clinic-info-item">
+                        <div class="clinic-info-icon">📞</div>
+                        <div class="clinic-info-text">(555) 123-4567</div>
+                    </div>
+                    <div class="clinic-info-item">
+                        <div class="clinic-info-icon">📧</div>
+                        <div class="clinic-info-text">hello@smiledental.com</div>
+                    </div>
+                    <div class="clinic-info-item">
+                        <div class="clinic-info-icon">⏰</div>
+                        <div class="clinic-info-text">Mon-Fri: 9am - 6pm<br>Sat: 10am - 2pm</div>
                     </div>
                 </div>
             </div>
@@ -413,19 +357,19 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container footer-grid">
-            <div class="footer-col branding">
-                <a href="#" class="logo">Pure<span class="diamond">✦</span>shine</a>
+        <div class="footer-grid">
+            <div class="footer-col footer-brand">
+                <a href="#" class="logo">Smile<span class="diamond">✦</span>Dental</a>
                 <p>Modern dental care for a healthier, more confident you. Professional treatments in a calming environment.</p>
-                <div class="social-icons">
-                    <a href="#" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                <div class="footer-social">
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
-                    <a href="#" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                     </a>
-                    <a href="#" aria-label="Twitter">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
                     </a>
                 </div>
             </div>
@@ -435,30 +379,25 @@
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Careers</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="#">General Dentistry</a></li>
-                    <li><a href="#">Teeth Whitening</a></li>
-                    <li><a href="#">Orthodontics</a></li>
-                    <li><a href="#">Dental Implants</a></li>
-                    <li><a href="#">Root Canal</a></li>
+                    <li><a href="#">General</a></li>
+                    <li><a href="#">Whitening</a></li>
+                    <li><a href="#">Implants</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
+            <div class="footer-col footer-contact">
                 <h4>Contact Info</h4>
                 <p>123 Dental Street<br>New York, NY 10001</p>
                 <p>(555) 123-4567</p>
-                <p>Mon - Fri: 9:00 - 18:00</p>
             </div>
         </div>
-        <div class="footer-bottom container">
-            <p>&copy; 2026 shine Dental. All rights reserved.</p>
-            <div class="legal-links">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Smile Dental. All rights reserved.</p>
+            <div class="footer-bottom-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
             </div>
@@ -466,7 +405,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/three-scene.js"></script>
     <script src="assets/js/scroll-animations.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
