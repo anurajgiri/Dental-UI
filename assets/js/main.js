@@ -89,7 +89,7 @@ function initCursor() {
 function initNavbar() {
     const nav = document.getElementById('main-nav');
     const hamburger = document.querySelector('.hamburger');
-    const mobileDrawer = document.querySelector('.mobile-drawer');
+    const mobileDrawer = document.querySelector('.nav-mobile-menu');
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 80) {

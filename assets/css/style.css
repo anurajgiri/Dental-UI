@@ -13,11 +13,26 @@
     --transition-base: all 0.3s ease;
 }
 
+/* Step 7 — Critical Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #F9F8F6;
+  color: #0A2540;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+}
+
 /* Reset & Global */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     cursor: none; /* Hide default for custom cursor */
 }
 
@@ -214,6 +229,14 @@ nav.scrolled .nav-link {
     padding: 10px 24px;
     border-radius: 100px;
     font-weight: 500;
+}
+
+.nav-mobile-menu {
+  display: none;
+}
+.nav-mobile-menu.active {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Hero Section */
