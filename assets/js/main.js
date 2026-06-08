@@ -24,7 +24,7 @@ function initLoader() {
         onComplete: () => {
             document.querySelector('.loader-overlay').style.display = 'none';
             // Start Hero Three.js and Entrance Animations
-            if (window.startHeroScene) window.startHeroScene();
+            // if (window.startHeroScene) window.startHeroScene();
             if (window.initScrollAnimations) window.initScrollAnimations();
             triggerHeroEntrance();
         }
@@ -42,6 +42,7 @@ function triggerHeroEntrance() {
 
 // 2. Custom Cursor
 function initCursor() {
+    return;
     const dot = document.querySelector('.cursor-dot');
     const ring = document.querySelector('.cursor-ring');
     
@@ -70,13 +71,15 @@ function initCursor() {
         el.addEventListener('mouseenter', () => {
             ring.style.width = '56px';
             ring.style.height = '56px';
-            ring.style.backgroundColor = 'rgba(0, 196, 161, 0.2)';
+            ring.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+            ring.style.borderColor = 'rgba(255, 255, 255, 0.7)';
             ring.style.mixBlendMode = 'multiply';
         });
         el.addEventListener('mouseleave', () => {
             ring.style.width = '32px';
             ring.style.height = '32px';
             ring.style.backgroundColor = 'transparent';
+            ring.style.borderColor = 'rgba(255, 255, 255, 0.7)';
             ring.style.mixBlendMode = 'normal';
         });
     });
@@ -145,14 +148,24 @@ function initMagneticButtons() {
 
 // 5. Testimonial Carousel
 function initCarousel() {
-    const track = document.querySelector('.carousel-track');
+    const track = document.querySelector('.testimonials-track');
     const cards = document.querySelectorAll('.testimonial-card');
     const nextBtn = document.querySelector('.carousel-next');
     const prevBtn = document.querySelector('.carousel-prev');
     
+    if (!track || !cards.length) return;
+    
     let index = 0;
 
     function updateCarousel() {
+        // Calculate offset for grid layout (3 columns on desktop, 1 on mobile)
+        const isMobile = window.innerWidth <= 1024;
+        const offset = isMobile ? index * 100 : (index * 100) / 3;
+        
+        // Simple slide for mobile, maybe just fade or grid shift for desktop
+        // But the user's Fix 5 implies a grid of 3.
+        // If it's a grid of 3, maybe we don't need a sliding carousel on desktop?
+        // Let's stick to simple sliding for now if cards.length > 3.
         track.style.transform = `translateX(-${index * 100}%)`;
     }
 

@@ -1,3 +1,7 @@
+// Three.js disabled — replaced with real photo
+if (true) { /* disabled */ }
+
+if (false) {
 let scene, camera, renderer, toothGroup, particles;
 let mouseX = 0, mouseY = 0;
 let targetRotationX = 0, targetRotationY = 0;
@@ -8,7 +12,7 @@ function initThree() {
     if (!canvas) return;
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xEAF6FB);
+    scene.background = new THREE.Color(0x4A86D4);
 
     const aspect = canvas.clientWidth / canvas.clientHeight;
     camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000);
@@ -20,6 +24,7 @@ function initThree() {
         antialias: true
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x4A86D4, 1);
     updateRendererSize();
 
     // Lighting
@@ -185,3 +190,4 @@ function animate() {
 
 // Start Three.js only after explicit call from main.js
 window.startHeroScene = initThree;
+}

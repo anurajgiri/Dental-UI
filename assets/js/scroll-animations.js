@@ -34,19 +34,6 @@ function initScrollAnimations() {
         });
     });
 
-    // 3. Services Grid Stagger
-    gsap.from('.service-card', {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-            trigger: '.services-grid',
-            start: 'top 80%'
-        }
-    });
-
     // 4. About Section Parallax & Content
     gsap.to('.parallax', {
         y: (i, el) => {
@@ -134,13 +121,14 @@ function initScrollAnimations() {
 
     // 7. Background Shift
     const sectionColors = {
-      hero: '#EAF6FB',
-      services: '#FFFFFF', 
-      about: '#E4F3FA',
-      stats: '#0D3D52',
+      hero: '#4A86D4',
+      services: '#FFFFFF',
+      about: '#4A86D4',
+      stats: '#3D78C0',
       process: '#FFFFFF',
-      testimonials: '#E4F3FA',
-      booking: '#FFFFFF'
+      testimonials: '#4A86D4',
+      booking: '#FFFFFF',
+      footer: '#3D78C0'
     };
 
     const sections = ['#hero', '#services', '#about', '#stats', '#process', '#testimonials', '#booking'];
@@ -150,7 +138,7 @@ function initScrollAnimations() {
         
         const key = id.replace('#', '');
         const targetColor = sectionColors[key];
-        const isDark = targetColor === '#0D3D52';
+        const isDark = targetColor === '#4A86D4' || targetColor === '#3D78C0';
         
         ScrollTrigger.create({
             trigger: section,
@@ -166,15 +154,6 @@ function initScrollAnimations() {
             color: isDark ? '#ffffff' : '#0D3D52',
             duration: 0.8
         });
-        
-        const nav = document.getElementById('main-nav');
-        if (isDark) {
-            nav.querySelector('.logo').style.color = '#ffffff';
-            nav.querySelectorAll('.nav-link').forEach(l => l.style.color = '#ffffff');
-        } else if (!nav.classList.contains('scrolled')) {
-            nav.querySelector('.logo').style.color = '#0D3D52';
-            nav.querySelectorAll('.nav-link').forEach(l => l.style.color = '#0D3D52');
-        }
     }
 }
 
