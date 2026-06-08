@@ -193,58 +193,42 @@ function initCarousel() {
 // 6. Booking Form
 function initBookingForm() {
     const form = document.getElementById('appointment-form');
-    if (!form) return;
-    const btn = form.querySelector('.btn-submit');
+    const btn  = form ? form.querySelector('button[type="submit"], .btn-submit, .submit-btn') : null;
+    if (!form || !btn) return;
+
+    const dateInput = form.querySelector('input[type="date"]');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    }
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const name      = form.querySelector('#name').value.trim();
-        const email     = form.querySelector('#email').value.trim();
-        const userPhone = form.querySelector('#phone').value.trim();
-        const service   = form.querySelector('#service').value;
-        const date      = form.querySelector('#date').value;
-        const message   = form.querySelector('#message').value.trim();
+        const name       = (form.querySelector('#name, input[name="name"]')?.value || '').trim();
+        const email      = (form.querySelector('#email, input[name="email"]')?.value || '').trim();
+        const userPhone  = (form.querySelector('#phone, input[name="phone"]')?.value || '').trim();
+        const service    = (form.querySelector('#service, select[name="service"]')?.value || '').trim();
+        const date       = (form.querySelector('#date, input[name="date"]')?.value || '').trim();
+        const message    = (form.querySelector('#message, textarea[name="message"]')?.value || '').trim();
 
         if (!name || !email || !userPhone || !service || !date) {
             alert('Please fill in all required fields.');
             return;
         }
 
-        const phone = '9779741875307';
-
+        const clinicPhone = '9779741875307';
         const msgLines = [
-            'Hello PureSmile Dental! I want to book an appointment.',
-            '',
-            `Name: ${name}`,
-            `Email: ${email}`,
-            `Patient Phone: ${userPhone}`,
-            `Service: ${service}`,
-            `Preferred Date: ${date}`,
-            `Message: ${message || 'N/A'}`
+          'Hello PureSmile Dental! Appointment request:',
+          'Name: ' + name,
+          'Email: ' + email,
+          'Phone: ' + userPhone,
+          'Service: ' + service,
+          'Date: ' + date,
+          'Note: ' + (message || 'N/A')
         ].join('\n');
-
-        const encodedMsg = encodeURIComponent(msgLines);
-        const whatsappURL = `https://wa.me/${phone}?text=${encodedMsg}`;
-
-        btn.classList.add('success');
-        setTimeout(() => {
-            const appURL = whatsappURL.replace(
-                'https://wa.me/9779741875307',
-                'whatsapp://send?phone=9779741875307'
-            );
-            const webURL = whatsappURL;
-
-            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                const tryApp = window.open(appURL, '_self');
-                setTimeout(() => {
-                    window.open(webURL, '_blank');
-                }, 1500);
-            } else {
-                window.open(webURL, '_blank');
-            }
-            btn.classList.remove('success');
-            form.reset();
-        }, 800);
+        const url = 'https://wa.me/' + clinicPhone + '?text=' + encodeURIComponent(msgLines);
+        window.open(url, '_blank');
+        form.reset();
     });
 }
