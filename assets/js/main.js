@@ -219,7 +219,7 @@ function initBookingForm() {
 
         const clinicPhone = '9779741875307';
         const msgLines = [
-          'Hello PureSmile Dental! Appointment request:',
+          'Hello Shine Dental! Appointment request:',
           'Name: ' + name,
           'Email: ' + email,
           'Phone: ' + userPhone,
