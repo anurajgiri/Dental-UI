@@ -227,7 +227,10 @@ function initBookingForm() {
           'Date: ' + date,
           'Note: ' + (message || 'N/A')
         ].join('\n');
-        const url = 'https://wa.me/' + clinicPhone + '?text=' + encodeURIComponent(msgLines);
+        
+        const encodedMsg = encodeURIComponent(msgLines);
+        const url = 'https://api.whatsapp.com/send?phone=' + clinicPhone + '&text=' + encodedMsg;
+        
         window.open(url, '_blank');
         form.reset();
     });
