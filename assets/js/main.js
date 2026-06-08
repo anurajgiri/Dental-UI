@@ -220,6 +220,7 @@ function initBookingForm() {
         const clinicPhone = '9779741875307';
         const msgLines = [
           'Hello Shine Dental! Appointment request:',
+          '',
           'Name: ' + name,
           'Email: ' + email,
           'Phone: ' + userPhone,
@@ -229,7 +230,13 @@ function initBookingForm() {
         ].join('\n');
         
         const encodedMsg = encodeURIComponent(msgLines);
-        const url = 'https://api.whatsapp.com/send?phone=' + clinicPhone + '&text=' + encodedMsg;
+        let url = '';
+
+        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            url = 'https://wa.me/' + clinicPhone + '?text=' + encodedMsg;
+        } else {
+            url = 'https://web.whatsapp.com/send?phone=' + clinicPhone + '&text=' + encodedMsg;
+        }
         
         window.open(url, '_blank');
         form.reset();
