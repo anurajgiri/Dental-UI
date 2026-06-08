@@ -193,38 +193,40 @@ function initCarousel() {
 // 6. Booking Form
 function initBookingForm() {
     const form = document.getElementById('appointment-form');
-    const submitBtn = form.querySelector('.submit-btn');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const spinner = submitBtn.querySelector('.loader-spinner');
-    const check = submitBtn.querySelector('.success-check');
+    if (!form) return;
+    const btn = form.querySelector('.btn-submit');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Show loading
-        btnText.style.display = 'none';
-        spinner.style.display = 'block';
-        submitBtn.disabled = true;
 
-        // Simulate API call
+        const name    = form.querySelector('#name').value.trim();
+        const email   = form.querySelector('#email').value.trim();
+        const phone   = form.querySelector('#phone').value.trim();
+        const service = form.querySelector('#service').value;
+        const date    = form.querySelector('#date').value;
+        const message = form.querySelector('#message').value.trim();
+
+        if (!name || !email || !phone || !service || !date) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        const text = 
+            `Hello PureSmile Dental, I would like to book an appointment.%0A%0A` +
+            `*Name:* ${name}%0A` +
+            `*Email:* ${email}%0A` +
+            `*Phone:* ${phone}%0A` +
+            `*Service:* ${service}%0A` +
+            `*Date:* ${date}%0A` +
+            `*Message:* ${message || 'N/A'}`;
+
+        const whatsappURL = `https://wa.me/9779741875307?text=${text}`;
+
+        btn.classList.add('success');
         setTimeout(() => {
-            spinner.style.display = 'none';
-            check.style.display = 'block';
-            submitBtn.style.background = '#00C4A1';
-            
-            gsap.from(check, {
-                scale: 0,
-                duration: 0.4,
-                ease: 'back.out(2)'
-            });
-
-            setTimeout(() => {
-                form.reset();
-                btnText.style.display = 'block';
-                check.style.display = 'none';
-                submitBtn.disabled = false;
-                submitBtn.style.background = 'linear-gradient(90deg, var(--accent), #00A689)';
-            }, 3000);
-        }, 2000);
+            window.open(whatsappURL, '_blank');
+            btn.classList.remove('success');
+            form.reset();
+        }, 800);
     });
 }
