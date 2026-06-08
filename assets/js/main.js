@@ -199,28 +199,33 @@ function initBookingForm() {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const name    = form.querySelector('#name').value.trim();
-        const email   = form.querySelector('#email').value.trim();
-        const phone   = form.querySelector('#phone').value.trim();
-        const service = form.querySelector('#service').value;
-        const date    = form.querySelector('#date').value;
-        const message = form.querySelector('#message').value.trim();
+        const name      = form.querySelector('#name').value.trim();
+        const email     = form.querySelector('#email').value.trim();
+        const userPhone = form.querySelector('#phone').value.trim();
+        const service   = form.querySelector('#service').value;
+        const date      = form.querySelector('#date').value;
+        const message   = form.querySelector('#message').value.trim();
 
-        if (!name || !email || !phone || !service || !date) {
+        if (!name || !email || !userPhone || !service || !date) {
             alert('Please fill in all required fields.');
             return;
         }
 
-        const text = 
-            `Hello PureSmile Dental, I would like to book an appointment.%0A%0A` +
-            `*Name:* ${name}%0A` +
-            `*Email:* ${email}%0A` +
-            `*Phone:* ${phone}%0A` +
-            `*Service:* ${service}%0A` +
-            `*Date:* ${date}%0A` +
-            `*Message:* ${message || 'N/A'}`;
+        const phone = '9779741875307';
 
-        const whatsappURL = `https://wa.me/9779741875307?text=${text}`;
+        const msgLines = [
+            'Hello PureSmile Dental! I want to book an appointment.',
+            '',
+            `Name: ${name}`,
+            `Email: ${email}`,
+            `Patient Phone: ${userPhone}`,
+            `Service: ${service}`,
+            `Preferred Date: ${date}`,
+            `Message: ${message || 'N/A'}`
+        ].join('\n');
+
+        const encodedMsg = encodeURIComponent(msgLines);
+        const whatsappURL = `https://wa.me/${phone}?text=${encodedMsg}`;
 
         btn.classList.add('success');
         setTimeout(() => {
