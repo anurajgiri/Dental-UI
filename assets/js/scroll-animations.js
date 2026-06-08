@@ -73,23 +73,38 @@ function initScrollAnimations() {
     });
 
     // 5. Stats Counter
-    document.querySelectorAll('.stat-number').forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        gsap.to(stat, {
-            innerText: target,
-            duration: 2,
-            snap: { innerText: 1 },
-            scrollTrigger: {
-                trigger: '#stats',
-                start: 'top 80%'
-            },
-            onUpdate: function() {
-                if (target === 500 || target === 98) {
-                    stat.innerText = Math.floor(this.targets()[0].innerText) + (target === 500 ? '+' : '%');
-                }
+    function animateCounter(element, target, suffix = '') {
+        let current = 0;
+        const increment = target / 80;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
             }
+            element.textContent = Math.floor(current) + suffix;
+        }, 25);
+    }
+
+    const statsSection = document.querySelector('#stats');
+    if (statsSection) {
+        ScrollTrigger.create({
+            trigger: statsSection,
+            start: 'top 80%',
+            onEnter: () => {
+                const patientsEl = statsSection.querySelector('[data-target="500"]');
+                const yearsEl = statsSection.querySelector('[data-target="20"]');
+                const doctorsEl = statsSection.querySelector('[data-target="15"]');
+                const satisfactionEl = statsSection.querySelector('[data-target="98"]');
+
+                if (patientsEl) animateCounter(patientsEl, 500, '+');
+                if (yearsEl) animateCounter(yearsEl, 20, '');
+                if (doctorsEl) animateCounter(doctorsEl, 15, '');
+                if (satisfactionEl) animateCounter(satisfactionEl, 98, '%');
+            },
+            once: true
         });
-    });
+    }
 
     // 6. Process Line Drawing & Steps
     const processPath = document.querySelector('.process-line-svg path');
