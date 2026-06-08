@@ -224,7 +224,20 @@ function initBookingForm() {
 
         btn.classList.add('success');
         setTimeout(() => {
-            window.open(whatsappURL, '_blank');
+            const appURL = whatsappURL.replace(
+                'https://wa.me/9779741875307',
+                'whatsapp://send?phone=9779741875307'
+            );
+            const webURL = whatsappURL;
+
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                const tryApp = window.open(appURL, '_self');
+                setTimeout(() => {
+                    window.open(webURL, '_blank');
+                }, 1500);
+            } else {
+                window.open(webURL, '_blank');
+            }
             btn.classList.remove('success');
             form.reset();
         }, 800);
