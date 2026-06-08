@@ -91,8 +91,8 @@ function initCursor() {
 // 3. Navbar
 function initNavbar() {
     const nav = document.getElementById('main-nav');
-    const hamburger = document.querySelector('.hamburger');
-    const mobileDrawer = document.querySelector('.nav-mobile-menu');
+    const btn = document.querySelector('.hamburger');
+    const menu = document.querySelector('.nav-mobile-menu');
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 80) {
@@ -102,17 +102,21 @@ function initNavbar() {
         }
     });
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileDrawer.classList.toggle('active');
-        
-        if (mobileDrawer.classList.contains('active')) {
-            gsap.from('.mobile-links a', {
-                y: 20,
-                opacity: 0,
-                stagger: 0.1,
-                delay: 0.2
-            });
+    const toggle = () => {
+        const isOpen = btn.classList.toggle('open');
+        menu.classList.toggle('open', isOpen);
+    };
+
+    btn.addEventListener('click', toggle);
+    btn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        toggle();
+    }, { passive: false });
+
+    document.addEventListener('touchstart', (e) => {
+        if (!nav.contains(e.target)) {
+            btn.classList.remove('open');
+            menu.classList.remove('open');
         }
     });
 }

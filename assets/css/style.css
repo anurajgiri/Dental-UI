@@ -1117,25 +1117,29 @@ footer {
   /* Navbar */
   nav { padding: 16px 24px; }
   .nav-container { padding: 0; padding-left: 24px !important; padding-right: 24px !important; }
-  .nav-links { display: none; }
+  .nav-links { display: none !important; }
   .hamburger { 
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    padding: 8px;
     z-index: 1001;
   }
   .hamburger span {
-    display: block;
-    width: 28px;
+    display: block !important;
+    width: 24px;
     height: 2px;
-    background: #FFFFFF;
+    background: #ffffff;
+    border-radius: 2px;
     transition: var(--transition-base);
   }
-  .logo { font-size: 1.25rem; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .nav-mobile-menu { display: none; width: 100%; background: #4A86D4; padding: 24px; }
+  .nav-mobile-menu.open { display: block !important; }
+  .mobile-links { display: flex; flex-direction: column; gap: 20px; text-align: center; }
+  .mobile-link { color: #ffffff; font-size: 1.25rem; font-weight: 500; }
 
   /* Hero */
   #hero { 
