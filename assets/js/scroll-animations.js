@@ -118,25 +118,37 @@ function initScrollAnimations() {
     });
 
     // 7. Background Shift
+    const sectionColors = {
+      hero: '#EAF6FB',
+      services: '#FFFFFF', 
+      about: '#E4F3FA',
+      stats: '#0D3D52',
+      process: '#FFFFFF',
+      testimonials: '#E4F3FA',
+      booking: '#FFFFFF'
+    };
+
     const sections = ['#hero', '#services', '#about', '#stats', '#process', '#testimonials', '#booking'];
     sections.forEach(id => {
         const section = document.querySelector(id);
         if (!section) return;
         
-        const isDark = section.classList.contains('bg-navy') || id === '#hero';
+        const key = id.replace('#', '');
+        const targetColor = sectionColors[key];
+        const isDark = targetColor === '#0D3D52';
         
         ScrollTrigger.create({
             trigger: section,
             start: 'top 50%',
-            onEnter: () => updateBg(isDark),
-            onEnterBack: () => updateBg(isDark)
+            onEnter: () => updateBg(targetColor, isDark),
+            onEnterBack: () => updateBg(targetColor, isDark)
         });
     });
 
-    function updateBg(isDark) {
+    function updateBg(bgColor, isDark) {
         gsap.to('body', {
-            backgroundColor: isDark ? '#0A2540' : '#F9F8F6',
-            color: isDark ? '#ffffff' : '#0A2540',
+            backgroundColor: bgColor,
+            color: isDark ? '#ffffff' : '#0D3D52',
             duration: 0.8
         });
         
@@ -145,8 +157,8 @@ function initScrollAnimations() {
             nav.querySelector('.logo').style.color = '#ffffff';
             nav.querySelectorAll('.nav-link').forEach(l => l.style.color = '#ffffff');
         } else if (!nav.classList.contains('scrolled')) {
-            nav.querySelector('.logo').style.color = '#0A2540';
-            nav.querySelectorAll('.nav-link').forEach(l => l.style.color = '#0A2540');
+            nav.querySelector('.logo').style.color = '#0D3D52';
+            nav.querySelectorAll('.nav-link').forEach(l => l.style.color = '#0D3D52');
         }
     }
 }

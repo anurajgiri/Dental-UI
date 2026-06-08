@@ -8,6 +8,7 @@ function initThree() {
     if (!canvas) return;
 
     scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xEAF6FB);
 
     const aspect = canvas.clientWidth / canvas.clientHeight;
     camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000);
