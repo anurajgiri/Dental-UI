@@ -1112,11 +1112,11 @@ footer {
 /* Mobile (max-width: 767px) */
 @media (max-width: 767px) {
   body { overflow-x: hidden; }
-  section { padding: 60px 24px; }
+  section { padding: 60px 24px !important; box-sizing: border-box; }
 
   /* Navbar */
   nav { padding: 16px 24px; }
-  .nav-container { padding: 0; }
+  .nav-container { padding: 0; padding-left: 24px !important; padding-right: 24px !important; }
   .nav-links { display: none; }
   .hamburger { 
     display: flex;
@@ -1135,7 +1135,7 @@ footer {
     background: #FFFFFF;
     transition: var(--transition-base);
   }
-  .logo { font-size: 1.25rem; max-width: 100%; }
+  .logo { font-size: 1.25rem; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
   /* Hero */
   #hero { 
@@ -1144,7 +1144,7 @@ footer {
     text-align: center;
     display: block;
   }
-  .hero-container { flex-direction: column; }
+  .hero-container { flex-direction: column; width: 100%; box-sizing: border-box; overflow: hidden; }
   .hero-visual { display: none; }
   #hero h1 { 
     font-size: clamp(2rem, 6vw, 4.5rem);
@@ -1160,12 +1160,14 @@ footer {
   .hero-actions .cta-pill-outline {
     width: 100%;
     text-align: center;
-    padding: 16px 24px;
+    padding: 14px 20px;
+    box-sizing: border-box;
   }
   .social-proof { justify-content: center; }
 
   /* Services */
   .services-grid { grid-template-columns: 1fr; }
+  .service-card { min-width: 0; box-sizing: border-box; padding: 24px 20px; }
 
   /* About */
   #about { padding: 60px 24px; }
@@ -1173,14 +1175,20 @@ footer {
   .about-image { display: none; }
   .about-content { text-align: left; }
   .doctors-row { flex-direction: column; }
+  .doctor-card { align-items: center; width: 100%; }
+  .doctor-avatar { width: 56px; height: 56px; }
+  .team-mini-grid { align-items: center; justify-content: center; }
 
   /* Stats */
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stat-item::after { display: none !important; }
+  .stat-number { font-size: 42px !important; }
 
   /* Process */
   .process-grid { grid-template-columns: 1fr; }
   .process-grid::before { display: none; }
+  .step-bg-number { font-size: 48px; top: -10px; }
+  .step-icon { width: 60px; height: 60px; }
 
   /* Testimonials */
   .testimonials-track {
@@ -1188,12 +1196,14 @@ footer {
     overflow-x: hidden;
     gap: 20px;
   }
-  .testimonial-card { min-width: 90%; }
+  .carousel-track { scroll-snap-type: x mandatory; overflow-x: scroll; -webkit-overflow-scrolling: touch; }
+  .testimonial-card { scroll-snap-align: start; min-width: 88vw; }
 
   /* Booking */
   .booking-grid { grid-template-columns: 1fr; gap: 40px; }
   .booking-form-container { padding: 24px; }
   .form-row { grid-template-columns: 1fr; }
+  .form-group input, .form-group select, .form-group textarea { box-sizing: border-box; max-width: 100%; }
   .clinic-info { order: 2; }
   .btn-submit { width: 100%; }
 
@@ -1206,6 +1216,11 @@ footer {
     text-align: center; 
   }
   .footer-bottom-links { justify-content: center; }
+  .legal-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+  /* Global */
+  .container { padding-left: 24px !important; padding-right: 24px !important; }
+  .cursor-dot, .cursor-ring { display: none !important; }
 }
 
 /* Animations Helpers */
