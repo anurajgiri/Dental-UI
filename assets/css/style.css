@@ -193,7 +193,7 @@ nav.scrolled {
 }
 .nav-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 60px;
   align-items: center;
   max-width: 1200px;
@@ -201,22 +201,11 @@ nav.scrolled {
   padding: 0 80px;
 }
 
-.logo {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #FFFFFF;
-}
-
-.logo .diamond {
-  color: var(--color-accent);
-  margin: 0 4px;
-}
-
 .nav-links {
   display: flex;
   align-items: center;
   gap: 40px;
+  margin-left: auto;
 }
 
 .nav-link {
@@ -1213,9 +1202,15 @@ footer {
     overflow-x: hidden;
     gap: 20px;
   }
-  .carousel-track { display:flex; flex-direction:column; gap:20px; transform:none !important; }
-  .testimonial-card { min-width:100%; width:100%; }
-  .carousel-controls { display:none; }
+  .carousel-container { overflow: hidden; width: 100%; }
+  .carousel-track { display: flex; flex-direction: column;
+    gap: 20px; transform: none !important;
+    transition: none !important; width: 100%; }
+  .testimonial-card { min-width: 100% !important; width: 100% !important;
+    box-sizing: border-box; margin: 0; }
+  .carousel-controls { display: none !important; }
+  #testimonials { padding: 60px 24px; }
+  #testimonials .section-header h2 { font-size: 28px; }
 
   /* Booking */
   .booking-grid { grid-template-columns: 1fr; gap: 40px; }
