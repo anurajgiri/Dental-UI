@@ -1211,18 +1211,22 @@ footer {
   .step-icon { width: 60px; height: 60px; }
 
   /* Testimonials */
-  .testimonials-track {
-    display: flex;
-    overflow-x: hidden;
-    gap: 20px;
+  .testimonials-wrapper { overflow: hidden; width: 100%; }
+  .testimonials-track { 
+    display: flex !important; 
+    flex-direction: row !important; 
+    gap: 20px !important; 
+    transform: none; 
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+    width: max-content !important;
   }
-  .carousel-container { overflow: hidden; width: 100%; }
-  .carousel-track { display: flex; flex-direction: column;
-    gap: 20px; transform: none !important;
-    transition: none !important; width: 100%; }
-  .testimonial-card { min-width: 100% !important; width: 100% !important;
-    box-sizing: border-box; margin: 0; }
-  .carousel-controls { display: none !important; }
+  .testimonial-card { 
+    min-width: calc(100vw - 48px) !important; 
+    width: calc(100vw - 48px) !important; 
+    box-sizing: border-box; 
+    margin: 0; 
+  }
+  .testimonials-nav { display: flex !important; justify-content: center; gap: 16px; margin-top: 32px; }
   #testimonials { padding: 60px 24px; }
   #testimonials .section-header h2 { font-size: 28px; }
 
