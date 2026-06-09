@@ -49,15 +49,18 @@ function initScrollAnimations() {
         }
     });
 
-    gsap.from('.about-content', {
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: {
-            trigger: '.about-container',
-            start: 'top 70%'
-        }
-    });
+    const aboutTrigger = document.querySelector('.about-grid');
+    if (aboutTrigger) {
+        gsap.from('.about-content', {
+            x: 50,
+            opacity: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: aboutTrigger,
+                start: 'top 70%'
+            }
+        });
+    }
 
     // 5. Stats Counter
     function animateCounter(element, target, suffix = '') {
@@ -108,16 +111,19 @@ function initScrollAnimations() {
         });
     }
 
-    gsap.from('.process-step', {
-        y: 40,
-        opacity: 0,
-        stagger: 0.3,
-        duration: 0.8,
-        scrollTrigger: {
-            trigger: '.process-steps',
-            start: 'top 70%'
-        }
-    });
+    const processGrid = document.querySelector('.process-grid');
+    if (processGrid) {
+        gsap.from('.process-step', {
+            y: 40,
+            opacity: 0,
+            stagger: 0.3,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: processGrid,
+                start: 'top 70%'
+            }
+        });
+    }
 
     // 7. Background Shift
     const sectionColors = {
