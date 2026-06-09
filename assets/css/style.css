@@ -177,23 +177,24 @@ ul {
 nav {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   padding: 24px 0;
   z-index: 1000;
   transition: var(--transition-base);
-  background: rgba(74, 134, 212, 0.92);
+  background: rgba(30, 60, 114, 0.95);
 }
 
 nav.scrolled {
-  background: rgba(74, 134, 212, 0.98);
+  background: rgba(20, 45, 90, 0.98);
   backdrop-filter: blur(12px);
   padding: 16px 0;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
-
 .nav-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 60px;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -1212,8 +1213,9 @@ footer {
     overflow-x: hidden;
     gap: 20px;
   }
-  .carousel-track { scroll-snap-type: x mandatory; overflow-x: scroll; -webkit-overflow-scrolling: touch; }
-  .testimonial-card { scroll-snap-align: start; min-width: 88vw; }
+  .carousel-track { display:flex; flex-direction:column; gap:20px; transform:none !important; }
+  .testimonial-card { min-width:100%; width:100%; }
+  .carousel-controls { display:none; }
 
   /* Booking */
   .booking-grid { grid-template-columns: 1fr; gap: 40px; }
