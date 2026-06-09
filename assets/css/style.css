@@ -194,11 +194,24 @@ nav.scrolled {
 .nav-container {
   display: flex;
   justify-content: space-between;
-  gap: 60px;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 80px;
+  width: 100%;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-right: auto;
+}
+
+.logo .diamond {
+  color: var(--color-accent);
+  margin: 0 4px;
 }
 
 .nav-links {
