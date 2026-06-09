@@ -22,9 +22,8 @@ function initLoader() {
         duration: 0.8,
         ease: 'power2.out',
         onComplete: () => {
-            document.querySelector('.loader-overlay').style.display = 'none';
-            // Start Hero Three.js and Entrance Animations
-            // if (window.startHeroScene) window.startHeroScene();
+            const loader = document.querySelector('.loader-overlay');
+            if (loader) loader.style.display = 'none';
             if (window.initScrollAnimations) window.initScrollAnimations();
             triggerHeroEntrance();
         }
@@ -42,50 +41,8 @@ function triggerHeroEntrance() {
 
 // 2. Custom Cursor
 function initCursor() {
+    // Disabled as per original logic (return early)
     return;
-    const dot = document.querySelector('.cursor-dot');
-    const ring = document.querySelector('.cursor-ring');
-    
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    });
-
-    function lerpRing() {
-        ringX += (mouseX - ringX) * 0.12;
-        ringY += (mouseY - ringY) * 0.12;
-        
-        ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
-        requestAnimationFrame(lerpRing);
-    }
-    lerpRing();
-
-    // Hover states
-    const interactives = document.querySelectorAll('a, button, .service-card, .magnetic');
-    interactives.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            ring.style.width = '56px';
-            ring.style.height = '56px';
-            ring.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-            ring.style.borderColor = 'rgba(255, 255, 255, 0.7)';
-            ring.style.mixBlendMode = 'multiply';
-        });
-        el.addEventListener('mouseleave', () => {
-            ring.style.width = '32px';
-            ring.style.height = '32px';
-            ring.style.backgroundColor = 'transparent';
-            ring.style.borderColor = 'rgba(255, 255, 255, 0.7)';
-            ring.style.mixBlendMode = 'normal';
-        });
-    });
-
-    window.addEventListener('mousedown', () => dot.style.transform += ' scale(1.5)');
-    window.addEventListener('mouseup', () => dot.style.transform = dot.style.transform.replace(' scale(1.5)', ''));
 }
 
 // 3. Navbar
@@ -93,6 +50,8 @@ function initNavbar() {
     const nav = document.getElementById('main-nav');
     const btn = document.querySelector('.hamburger');
     const menu = document.querySelector('.nav-links');
+
+    if (!nav || !btn || !menu) return;
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 80) {
@@ -108,13 +67,26 @@ function initNavbar() {
     };
 
     btn.addEventListener('click', toggle);
-    btn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        toggle();
-    }, { passive: false });
+    
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu
+                    btn.classList.remove('open');
+                    menu.classList.remove('open');
+                }
+            }
+        });
+    });
 
-    document.addEventListener('touchstart', (e) => {
-        if (!nav.contains(e.target)) {
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && menu.classList.contains('open')) {
             btn.classList.remove('open');
             menu.classList.remove('open');
         }
@@ -157,44 +129,95 @@ function initCarousel() {
     const nextBtn = document.querySelector('.carousel-next');
     const prevBtn = document.querySelector('.carousel-prev');
     
-    if (!track || !cards.length) return;
+    if (!track || !cards.length || !nextBtn || !prevBtn) return;
     
     let index = 0;
+    let startX = 0;
+    let isDragging = false;
+
+    function getVisibleCards() {
+        if (window.innerWidth <= 767) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
 
     function updateCarousel() {
-        // Calculate offset for grid layout (3 columns on desktop, 1 on mobile)
-        const isMobile = window.innerWidth <= 1024;
-        const offset = isMobile ? index * 100 : (index * 100) / 3;
+        const visibleCards = getVisibleCards();
+        const maxIndex = Math.max(0, cards.length - visibleCards);
         
-        // Simple slide for mobile, maybe just fade or grid shift for desktop
-        // But the user's Fix 5 implies a grid of 3.
-        // If it's a grid of 3, maybe we don't need a sliding carousel on desktop?
-        // Let's stick to simple sliding for now if cards.length > 3.
-        track.style.transform = `translateX(-${index * 100}%)`;
+        if (index > maxIndex) index = maxIndex;
+        if (index < 0) index = 0;
+
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 32; // Matching CSS gap
+        const moveX = index * (cardWidth + gap);
+        
+        track.style.transform = `translateX(-${moveX}px)`;
+
+        // Update button states
+        prevBtn.style.opacity = index === 0 ? '0.5' : '1';
+        prevBtn.style.pointerEvents = index === 0 ? 'none' : 'auto';
+        nextBtn.style.opacity = index >= maxIndex ? '0.5' : '1';
+        nextBtn.style.pointerEvents = index >= maxIndex ? 'none' : 'auto';
     }
 
     nextBtn.addEventListener('click', () => {
-        index = (index + 1) % cards.length;
-        updateCarousel();
+        const visibleCards = getVisibleCards();
+        if (index < cards.length - visibleCards) {
+            index++;
+            updateCarousel();
+        }
     });
 
     prevBtn.addEventListener('click', () => {
-        index = (index - 1 + cards.length) % cards.length;
-        updateCarousel();
+        if (index > 0) {
+            index--;
+            updateCarousel();
+        }
     });
 
-    // Auto-scroll
-    setInterval(() => {
-        index = (index + 1) % cards.length;
-        updateCarousel();
-    }, 5000);
+    // Touch Support
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const currentX = e.touches[0].clientX;
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) nextBtn.click();
+            else prevBtn.click();
+            isDragging = false;
+        }
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
+    // Keyboard Access
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextBtn.click();
+        if (e.key === 'ArrowLeft') prevBtn.click();
+    });
+
+    // Window Resize handling
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateCarousel, 250);
+    });
+
+    // Initial State
+    updateCarousel();
 }
 
 // 6. Booking Form
 function initBookingForm() {
     const form = document.getElementById('appointment-form');
-    const btn  = form ? form.querySelector('button[type="submit"], .btn-submit, .submit-btn') : null;
-    if (!form || !btn) return;
+    if (!form) return;
 
     const dateInput = form.querySelector('input[type="date"]');
     if (dateInput) {
