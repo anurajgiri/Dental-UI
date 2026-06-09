@@ -749,6 +749,8 @@ nav.scrolled {
 
 .testimonials-track {
   display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   gap: 32px;
 }
@@ -1091,10 +1093,10 @@ footer {
   .process-grid { grid-template-columns: repeat(4, 1fr); }
   .testimonials-track { 
     display: flex;
-    gap: 28px;
-    overflow-x: hidden;
+    gap: 32px;
+    overflow-x: visible;
   }
-  .testimonial-card { min-width: calc(33.333% - 19px); }
+  .testimonial-card { min-width: calc(33.333% - 21.33px); }
   .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.5fr; }
 }
 
@@ -1106,10 +1108,10 @@ footer {
   .process-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-track {
     display: flex;
-    gap: 28px;
-    overflow-x: hidden;
+    gap: 32px;
+    overflow-x: visible;
   }
-  .testimonial-card { min-width: calc(50% - 14px); }
+  .testimonial-card { min-width: calc(50% - 16px); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1214,19 +1216,18 @@ footer {
   .testimonials-wrapper { overflow: hidden; width: 100%; }
   .testimonials-track { 
     display: flex !important; 
-    flex-direction: row !important; 
-    gap: 20px !important; 
-    transform: none; 
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; 
-    width: max-content !important;
+    flex-direction: column !important; 
+    gap: 16px !important; 
+    transform: none !important; 
+    width: 100% !important;
   }
   .testimonial-card { 
-    min-width: calc(100vw - 48px) !important; 
-    width: calc(100vw - 48px) !important; 
+    min-width: 100% !important; 
+    width: 100% !important; 
     box-sizing: border-box; 
     margin: 0; 
   }
-  .testimonials-nav { display: flex !important; justify-content: center; gap: 16px; margin-top: 32px; }
+  .testimonials-nav { display: none !important; }
   #testimonials { padding: 60px 24px; }
   #testimonials .section-header h2 { font-size: 28px; }
 

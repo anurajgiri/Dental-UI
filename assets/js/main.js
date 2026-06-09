@@ -149,7 +149,8 @@ function initCarousel() {
         if (index < 0) index = 0;
 
         const cardWidth = cards[0].offsetWidth;
-        const gap = 32; // Matching CSS gap
+        const style = window.getComputedStyle(track);
+        const gap = parseFloat(style.gap) || 32;
         const moveX = index * (cardWidth + gap);
         
         track.style.transform = `translateX(-${moveX}px)`;
