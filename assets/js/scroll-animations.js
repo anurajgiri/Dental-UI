@@ -83,15 +83,15 @@ function initScrollAnimations() {
         });
     }
 
-    // 5. Background Shift Logic
+    // 5. Background Shift Logic - Updated for Light Theme
     const sections = [
-        { id: '#hero', color: 'transparent', text: '#ffffff' },
-        { id: '#services', color: 'rgba(255,255,255,0.95)', text: '#0D3D52' },
-        { id: '#about', color: 'transparent', text: '#ffffff' },
-        { id: '#stats', color: 'rgba(10, 15, 30, 0.8)', text: '#ffffff' },
-        { id: '#process', color: 'rgba(255,255,255,0.95)', text: '#0D3D52' },
-        { id: '#testimonials', color: 'transparent', text: '#ffffff' },
-        { id: '#booking', color: 'rgba(255,255,255,0.95)', text: '#0D3D52' }
+        { id: '#hero', color: 'transparent', text: '#1a2332' },
+        { id: '#services', color: 'rgba(235, 245, 251, 0.95)', text: '#4a5568' },
+        { id: '#about', color: 'transparent', text: '#4a5568' },
+        { id: '#stats', color: 'rgba(221, 238, 255, 0.8)', text: '#1a2332' },
+        { id: '#process', color: 'rgba(235, 245, 251, 0.95)', text: '#4a5568' },
+        { id: '#testimonials', color: 'transparent', text: '#4a5568' },
+        { id: '#booking', color: 'rgba(235, 245, 251, 0.95)', text: '#4a5568' }
     ];
 
     sections.forEach(sec => {
