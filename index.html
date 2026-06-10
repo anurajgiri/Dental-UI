@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- 3D Background Canvas -->
+    <canvas id="three-canvas"></canvas>
+
     <!-- Page Loader -->
     <div id="loader" class="loader-overlay">
         <div class="loader-content">
@@ -131,8 +134,7 @@
         <section id="about">
             <div class="about-grid">
                 <div class="about-image parallax" data-speed="0.2">
-                    <img src="assets/services-modern.jpg" alt="Professional Dental Treatment"
-                         style="width:100%;height:100%;object-fit:cover;border-radius:24px;">
+                    <div style="font-size: 120px;">🏥</div>
                 </div>
                 <div class="about-content">
                     <h2 class="reveal-text">20 Years of Trusted Dental Excellence</h2>
@@ -150,33 +152,22 @@
                             <div class="feature-text">Personalized care plans tailored specifically for every patient's unique needs.</div>
                         </div>
                     </div>
-                    <div style="background:rgba(255,255,255,0.1);border-radius:16px;padding:24px;margin-bottom:32px;">
-                      <p style="color:#fff;font-size:15px;line-height:1.8;">
-                      At PureSmile Dental, we combine cutting-edge technology with 
-                      compassionate care. Our clinic is equipped with digital X-rays, 
-                      laser dentistry, and 3D imaging to ensure precise, comfortable 
-                      treatments. Located in the heart of Kathmandu, we serve patients 
-                      across Nepal with internationally trained specialists dedicated 
-                      to your perfect smile.
-                      </p>
-                    </div>
-                    <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:32px;">
-                      <div style="text-align:center;flex:1;min-width:100px;">
-                        <div style="font-size:28px;font-weight:700;color:#00C4A1;">500+</div>
-                        <div style="color:rgba(255,255,255,0.8);font-size:13px;">Happy Patients</div>
-                      </div>
-                      <div style="text-align:center;flex:1;min-width:100px;">
-                        <div style="font-size:28px;font-weight:700;color:#00C4A1;">20+</div>
-                        <div style="color:rgba(255,255,255,0.8);font-size:13px;">Years Experience</div>
-                      </div>
-                      <div style="text-align:center;flex:1;min-width:100px;">
-                        <div style="font-size:28px;font-weight:700;color:#00C4A1;">15+</div>
-                        <div style="color:rgba(255,255,255,0.8);font-size:13px;">Specialists</div>
-                      </div>
-                      <div style="text-align:center;flex:1;min-width:100px;">
-                        <div style="font-size:28px;font-weight:700;color:#00C4A1;">98%</div>
-                        <div style="color:rgba(255,255,255,0.8);font-size:13px;">Satisfaction</div>
-                      </div>
+                    <div class="doctors-row">
+                        <div class="doctor-card">
+                            <div class="doctor-avatar">SK</div>
+                            <h4>Dr. Salina Kafle</h4>
+                            <p>Orthodontist</p>
+                        </div>
+                        <div class="doctor-card">
+                            <div class="doctor-avatar">RJ</div>
+                            <h4>Dr. Ram Nath Jha</h4>
+                            <p>Implant Specialist</p>
+                        </div>
+                        <div class="doctor-card">
+                            <div class="doctor-avatar">DT</div>
+                            <h4>Dr. Dipesh Timilsina</h4>
+                            <p>Cosmetic Dentist</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -207,7 +198,7 @@
         <!-- Process Section -->
         <section id="process">
             <div class="container">
-                <h2 class="section-title reveal-text">Your Journey to a Perfect Smile</h2>
+                <h2 class="section-title reveal-text">Your Journey to a Perfect Shine</h2>
                 <div class="process-grid">
                     <div class="process-step">
                         <div class="step-number">01</div>
@@ -276,17 +267,6 @@
                         </div>
                         <div class="testimonial-card">
                             <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-quote">"Excellent service and very caring staff. The entire treatment process was smooth and comfortable."</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">AS</div>
-                                <div class="author-info">
-                                    <div class="author-name">Asmita Singh</div>
-                                    <div class="author-badge">Verified Patient</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">★★★★★</div>
                             <p class="testimonial-quote">"Fantastic results with my whitening treatment. The process was explained clearly and the results are amazing."</p>
                             <div class="testimonial-author">
                                 <div class="author-avatar">SB</div>
@@ -295,27 +275,6 @@
                                     <div class="author-badge">Verified Patient</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-quote">"Very gentle and caring doctors. The whole process was painless and results are outstanding!"</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">DK</div>
-                                <div class="author-info">
-                                    <div class="author-name">Dinesh Kafle</div>
-                                    <div class="author-badge">Verified Patient</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-quote">"Excellent service and very professional staff. My teeth look amazing after the whitening treatment!"</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">AT</div>
-                                <div class="author-info">
-                                    <div class="author-name">Asmita Tamang</div>
-                                    <div class="author-badge">Verified Patient</div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -378,15 +337,15 @@
                     </div>
                     <div class="clinic-info-item">
                         <div class="clinic-info-icon">📞</div>
-                        <div class="clinic-info-text">+977 974-1875307</div>
+                        <div class="clinic-info-text">9779741875307</div>
                     </div>
                     <div class="clinic-info-item">
                         <div class="clinic-info-icon">📧</div>
-                        <div class="clinic-info-text">pupresmile@gmail.com</div>
+                        <div class="clinic-info-text">hello@shinedental.com</div>
                     </div>
                     <div class="clinic-info-item">
                         <div class="clinic-info-icon">⏰</div>
-                        <div class="clinic-info-text">Everyday: 9am - 8pm</div>
+                        <div class="clinic-info-text">Every-day: 9am - 8pm</div>
                     </div>
                     <div class="map-placeholder">
                       <iframe
@@ -460,8 +419,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/three-scene.js"></script>
     <script src="assets/js/scroll-animations.js"></script>
+    <script src="assets/js/three-scene.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

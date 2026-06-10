@@ -1,6 +1,8 @@
 gsap.registerPlugin(ScrollTrigger);
 
 function initScrollAnimations() {
+    const isMobile = window.innerWidth < 768;
+
     // 1. Scroll Progress Bar
     gsap.to('.scroll-progress', {
         width: '100%',
@@ -10,7 +12,7 @@ function initScrollAnimations() {
         }
     });
 
-    // 2. Section Heading Reveal (Split-text effect)
+    // 2. Section Heading Reveal
     document.querySelectorAll('.reveal-text').forEach(heading => {
         const text = heading.textContent;
         heading.innerHTML = '';
@@ -22,145 +24,111 @@ function initScrollAnimations() {
         });
 
         gsap.from(heading.querySelectorAll('span'), {
-            y: '100%',
+            y: 40,
             opacity: 0,
-            duration: 1,
-            stagger: 0.1,
-            ease: 'power4.out',
+            duration: 0.8,
+            stagger: 0.05,
+            ease: 'power3.out',
             scrollTrigger: {
                 trigger: heading,
-                start: 'top 85%'
+                start: 'top 90%',
+                toggleActions: 'play none none none'
             }
         });
     });
 
-    // 4. About Section Parallax & Content
-    gsap.to('.parallax', {
-        y: (i, el) => {
-            const speed = parseFloat(el.getAttribute('data-speed')) || 0.4;
-            return -100 * speed;
-        },
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '#about',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-        }
-    });
-
-    const aboutTrigger = document.querySelector('.about-grid');
-    if (aboutTrigger) {
-        gsap.from('.about-content', {
-            x: 50,
-            opacity: 0,
-            duration: 1,
+    // 3. Floating Hero Elements (Parallax)
+    if (!isMobile) {
+        gsap.to('.hero-img-frame', {
+            y: -50,
+            ease: 'none',
             scrollTrigger: {
-                trigger: aboutTrigger,
-                start: 'top 70%'
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
             }
         });
     }
 
-    // 5. Stats Counter
-    function animateCounter(element, target, suffix = '') {
-        let current = 0;
-        const increment = target / 80;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
+    // 4. Stats Counter
+    const animateCounter = (el, target, suffix = '') => {
+        let obj = { val: 0 };
+        gsap.to(obj, {
+            val: target,
+            duration: 2,
+            ease: 'power2.out',
+            onUpdate: () => {
+                el.textContent = Math.floor(obj.val) + suffix;
+            },
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 90%'
             }
-            element.textContent = Math.floor(current) + suffix;
-        }, 25);
-    }
+        });
+    };
 
     const statsSection = document.querySelector('#stats');
     if (statsSection) {
+        statsSection.querySelectorAll('.stat-number').forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const suffix = stat.getAttribute('data-target') === '500' ? '+' : 
+                          (stat.getAttribute('data-target') === '98' ? '%' : '');
+            animateCounter(stat, target, suffix);
+        });
+    }
+
+    // 5. Background Shift (Compatible with 3D Canvas)
+    const sections = [
+        { id: '#hero', color: '#4A86D4', text: '#ffffff' },
+        { id: '#services', color: '#ffffff', text: '#0D3D52' },
+        { id: '#about', color: '#4A86D4', text: '#ffffff' },
+        { id: '#stats', color: '#3D78C0', text: '#ffffff' },
+        { id: '#process', color: '#ffffff', text: '#0D3D52' },
+        { id: '#testimonials', color: '#4A86D4', text: '#ffffff' },
+        { id: '#booking', color: '#ffffff', text: '#0D3D52' }
+    ];
+
+    sections.forEach(sec => {
+        const el = document.querySelector(sec.id);
+        if (!el) return;
+
         ScrollTrigger.create({
-            trigger: statsSection,
-            start: 'top 80%',
-            onEnter: () => {
-                const patientsEl = statsSection.querySelector('[data-target="500"]');
-                const yearsEl = statsSection.querySelector('[data-target="20"]');
-                const doctorsEl = statsSection.querySelector('[data-target="15"]');
-                const satisfactionEl = statsSection.querySelector('[data-target="98"]');
-
-                if (patientsEl) animateCounter(patientsEl, 500, '+');
-                if (yearsEl) animateCounter(yearsEl, 20, '');
-                if (doctorsEl) animateCounter(doctorsEl, 15, '');
-                if (satisfactionEl) animateCounter(satisfactionEl, 98, '%');
-            },
-            once: true
-        });
-    }
-
-    // 6. Process Line Drawing & Steps
-    const processPath = document.querySelector('.process-line-svg path');
-    if (processPath) {
-        gsap.to(processPath, {
-            strokeDashoffset: 0,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.process-wrapper',
-                start: 'top 60%',
-                end: 'bottom 40%',
-                scrub: 1
-            }
-        });
-    }
-
-    const processGrid = document.querySelector('.process-grid');
-    if (processGrid) {
-        gsap.from('.process-step', {
-            y: 40,
-            opacity: 0,
-            stagger: 0.3,
-            duration: 0.8,
-            scrollTrigger: {
-                trigger: processGrid,
-                start: 'top 70%'
-            }
-        });
-    }
-
-    // 7. Background Shift
-    const sectionColors = {
-      hero: '#4A86D4',
-      services: '#FFFFFF',
-      about: '#4A86D4',
-      stats: '#3D78C0',
-      process: '#FFFFFF',
-      testimonials: '#4A86D4',
-      booking: '#FFFFFF',
-      footer: '#3D78C0'
-    };
-
-    const sections = ['#hero', '#services', '#about', '#stats', '#process', '#testimonials', '#booking'];
-    sections.forEach(id => {
-        const section = document.querySelector(id);
-        if (!section) return;
-        
-        const key = id.replace('#', '');
-        const targetColor = sectionColors[key];
-        const isDark = targetColor === '#4A86D4' || targetColor === '#3D78C0';
-        
-        ScrollTrigger.create({
-            trigger: section,
+            trigger: el,
             start: 'top 50%',
-            onEnter: () => updateBg(targetColor, isDark),
-            onEnterBack: () => updateBg(targetColor, isDark)
+            end: 'bottom 50%',
+            onToggle: self => {
+                if (self.isActive) {
+                    gsap.to('body', {
+                        backgroundColor: sec.color,
+                        color: sec.text,
+                        duration: 0.6,
+                        overwrite: 'auto'
+                    });
+                    
+                    // Slightly fade 3D scene on white sections for better readability
+                    if (window.dentalScene) {
+                        gsap.to(window.dentalScene.particleSystem.material, {
+                            opacity: sec.color === '#ffffff' ? 0.3 : 0.6,
+                            duration: 0.6
+                        });
+                    }
+                }
+            }
         });
     });
 
-    function updateBg(bgColor, isDark) {
-        gsap.to('body', {
-            backgroundColor: bgColor,
-            color: isDark ? '#ffffff' : '#0D3D52',
-            duration: 0.8
-        });
-    }
+    // 6. Reveal Animations for Cards
+    gsap.from('.service-card, .process-step', {
+        y: 30,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        scrollTrigger: {
+            trigger: '.services-grid, .process-grid',
+            start: 'top 85%'
+        }
+    });
 }
 
 window.initScrollAnimations = initScrollAnimations;

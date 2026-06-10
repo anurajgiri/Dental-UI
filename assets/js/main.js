@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
-    initCursor();
     initNavbar();
     initMagneticButtons();
     initCarousel();
@@ -13,13 +12,13 @@ function initLoader() {
     
     tl.to('.loader-progress-bar', {
         width: '100%',
-        duration: 2,
+        duration: 1.5,
         ease: 'power2.inOut'
     });
 
     tl.to('.loader-overlay', {
         opacity: 0,
-        duration: 0.8,
+        duration: 0.6,
         ease: 'power2.out',
         onComplete: () => {
             const loader = document.querySelector('.loader-overlay');
@@ -39,13 +38,7 @@ function triggerHeroEntrance() {
       .from('.social-proof', { opacity: 0, duration: 0.6 }, '-=0.4');
 }
 
-// 2. Custom Cursor
-function initCursor() {
-    // Disabled as per original logic (return early)
-    return;
-}
-
-// 3. Navbar
+// 2. Navbar
 function initNavbar() {
     const nav = document.getElementById('main-nav');
     const btn = document.querySelector('.hamburger');
@@ -54,7 +47,7 @@ function initNavbar() {
     if (!nav || !btn || !menu) return;
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 80) {
+        if (window.scrollY > 50) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
@@ -62,13 +55,14 @@ function initNavbar() {
     });
 
     const toggle = () => {
-        const isOpen = btn.classList.toggle('open');
-        menu.classList.toggle('open', isOpen);
+        const isOpen = menu.classList.toggle('open');
+        btn.classList.toggle('active', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
     btn.addEventListener('click', toggle);
     
-    // Smooth scroll for nav links
+    // Close menu on link click
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
             const targetId = link.getAttribute('href');
@@ -76,25 +70,35 @@ function initNavbar() {
                 e.preventDefault();
                 const targetEl = document.querySelector(targetId);
                 if (targetEl) {
-                    targetEl.scrollIntoView({ behavior: 'smooth' });
-                    // Close mobile menu
-                    btn.classList.remove('open');
-                    menu.classList.remove('open');
+                    if (menu.classList.contains('open')) toggle();
+                    
+                    const offset = 80;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = targetEl.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             }
         });
     });
 
+    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && menu.classList.contains('open')) {
-            btn.classList.remove('open');
-            menu.classList.remove('open');
+        if (menu.classList.contains('open') && !nav.contains(e.target)) {
+            toggle();
         }
     });
 }
 
-// 4. Magnetic Buttons
+// 3. Magnetic Buttons
 function initMagneticButtons() {
+    if (window.innerWidth < 1024) return; // Disable on tablet/mobile
+
     const buttons = document.querySelectorAll('.magnetic');
     
     buttons.forEach(btn => {
@@ -122,7 +126,7 @@ function initMagneticButtons() {
     });
 }
 
-// 5. Testimonial Carousel
+// 4. Testimonial Carousel
 function initCarousel() {
     const track = document.querySelector('.testimonials-track');
     const cards = document.querySelectorAll('.testimonial-card');
@@ -132,39 +136,24 @@ function initCarousel() {
     if (!track || !cards.length || !nextBtn || !prevBtn) return;
     
     let index = 0;
-    let startX = 0;
-    let isDragging = false;
-
-    function getVisibleCards() {
-        if (window.innerWidth <= 767) return 1;
-        if (window.innerWidth <= 1024) return 2;
-        return 3;
-    }
 
     function updateCarousel() {
-        const visibleCards = getVisibleCards();
-        const maxIndex = Math.max(0, cards.length - visibleCards);
+        const gap = 24;
+        const moveX = index * (cards[0].offsetWidth + gap);
         
-        if (index > maxIndex) index = maxIndex;
-        if (index < 0) index = 0;
-
-        const cardWidth = cards[0].offsetWidth;
-        const style = window.getComputedStyle(track);
-        const gap = parseFloat(style.gap) || 32;
-        const moveX = index * (cardWidth + gap);
-        
-        track.style.transform = `translateX(-${moveX}px)`;
+        gsap.to(track, {
+            x: -moveX,
+            duration: 0.6,
+            ease: 'power2.inOut'
+        });
 
         // Update button states
-        prevBtn.style.opacity = index === 0 ? '0.5' : '1';
-        prevBtn.style.pointerEvents = index === 0 ? 'none' : 'auto';
-        nextBtn.style.opacity = index >= maxIndex ? '0.5' : '1';
-        nextBtn.style.pointerEvents = index >= maxIndex ? 'none' : 'auto';
+        prevBtn.style.opacity = index === 0 ? '0.3' : '1';
+        nextBtn.style.opacity = index >= cards.length - 1 ? '0.3' : '1';
     }
 
     nextBtn.addEventListener('click', () => {
-        const visibleCards = getVisibleCards();
-        if (index < cards.length - visibleCards) {
+        if (index < cards.length - 1) {
             index++;
             updateCarousel();
         }
@@ -178,91 +167,52 @@ function initCarousel() {
     });
 
     // Touch Support
-    track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
+    let startX = 0;
+    track.addEventListener('touchstart', (e) => startX = e.touches[0].clientX, { passive: true });
+    track.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        if (startX - endX > 50) nextBtn.click();
+        else if (endX - startX > 50) prevBtn.click();
     }, { passive: true });
 
-    track.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const currentX = e.touches[0].clientX;
-        const diff = startX - currentX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) nextBtn.click();
-            else prevBtn.click();
-            isDragging = false;
-        }
-    }, { passive: true });
-
-    track.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-
-    // Keyboard Access
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') nextBtn.click();
-        if (e.key === 'ArrowLeft') prevBtn.click();
-    });
-
-    // Window Resize handling
-    let resizeTimer;
     window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(updateCarousel, 250);
+        index = 0;
+        updateCarousel();
     });
-
-    // Initial State
-    updateCarousel();
 }
 
-// 6. Booking Form
+// 5. Booking Form
 function initBookingForm() {
     const form = document.getElementById('appointment-form');
     if (!form) return;
 
-    const dateInput = form.querySelector('input[type="date"]');
-    if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
-    }
-
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        const name       = (form.querySelector('#name, input[name="name"]')?.value || '').trim();
-        const email      = (form.querySelector('#email, input[name="email"]')?.value || '').trim();
-        const userPhone  = (form.querySelector('#phone, input[name="phone"]')?.value || '').trim();
-        const service    = (form.querySelector('#service, select[name="service"]')?.value || '').trim();
-        const date       = (form.querySelector('#date, input[name="date"]')?.value || '').trim();
-        const message    = (form.querySelector('#message, textarea[name="message"]')?.value || '').trim();
-
-        if (!name || !email || !userPhone || !service || !date) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-
-        const clinicPhone = '9779741875307';
-        const msgLines = [
-          'Hello Shine Dental! Appointment request:',
-          '',
-          'Name: ' + name,
-          'Email: ' + email,
-          'Phone: ' + userPhone,
-          'Service: ' + service,
-          'Date: ' + date,
-          'Note: ' + (message || 'N/A')
-        ].join('\n');
         
-        const encodedMsg = encodeURIComponent(msgLines);
-        let url = '';
+        // Form feedback
+        const btn = form.querySelector('.btn-submit');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Sending...';
+        btn.style.pointerEvents = 'none';
 
-        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            url = 'https://wa.me/' + clinicPhone + '?text=' + encodedMsg;
-        } else {
-            url = 'https://web.whatsapp.com/send?phone=' + clinicPhone + '&text=' + encodedMsg;
-        }
-        
-        window.open(url, '_blank');
-        form.reset();
+        setTimeout(() => {
+            const clinicPhone = '9779741875307';
+            const name = form.querySelector('#name').value;
+            const service = form.querySelector('#service').value;
+            const date = form.querySelector('#date').value;
+            
+            const msg = `Hi Shine Dental, I'm ${name}. I'd like to book ${service} on ${date}.`;
+            const url = `https://wa.me/${clinicPhone}?text=${encodeURIComponent(msg)}`;
+            
+            window.open(url, '_blank');
+            
+            btn.innerHTML = 'Sent!';
+            form.reset();
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.pointerEvents = 'auto';
+            }, 3000);
+        }, 1000);
     });
 }
