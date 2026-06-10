@@ -78,7 +78,7 @@ function initScrollAnimations() {
         });
     }
 
-    // 5. Background Shift (Compatible with 3D Canvas)
+    // 5. Background Shift
     const sections = [
         { id: '#hero', color: '#4A86D4', text: '#ffffff' },
         { id: '#services', color: '#ffffff', text: '#0D3D52' },
@@ -105,14 +105,6 @@ function initScrollAnimations() {
                         duration: 0.6,
                         overwrite: 'auto'
                     });
-                    
-                    // Slightly fade 3D scene on white sections for better readability
-                    if (window.dentalScene) {
-                        gsap.to(window.dentalScene.particleSystem.material, {
-                            opacity: sec.color === '#ffffff' ? 0.3 : 0.6,
-                            duration: 0.6
-                        });
-                    }
                 }
             }
         });
