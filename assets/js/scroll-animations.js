@@ -120,16 +120,21 @@ function initScrollAnimations() {
     });
 
     // 6. Card Reveal
-    gsap.from('.service-card, .process-step', {
-        y: 30,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.6,
-        scrollTrigger: {
-            trigger: '.services-grid, .process-grid',
-            start: 'top 85%'
+    gsap.fromTo('.service-card, .process-step', 
+        { y: 30, opacity: 0 },
+        { 
+            y: 0, 
+            opacity: 1, 
+            visibility: 'visible',
+            stagger: 0.1,
+            duration: 0.6,
+            scrollTrigger: {
+                trigger: '.services-grid, .process-grid',
+                start: 'top 85%',
+                once: true
+            }
         }
-    });
+    );
 }
 
 window.initScrollAnimations = initScrollAnimations;
