@@ -397,12 +397,24 @@ nav.scrolled {
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.services-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .service-card {
+  min-width: 300px;
+  flex: 0 0 300px;
+  scroll-snap-align: start;
   background: white;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
@@ -465,7 +477,7 @@ nav.scrolled {
   font-weight: 700;
 }
 
-/* About */
+/* About & Team */
 #about {
   color: #FFFFFF;
 }
@@ -504,28 +516,63 @@ nav.scrolled {
 
 .doctors-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
 }
 
 .doctor-card {
-  text-align: center;
-  flex: 1;
-  min-width: 100px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 24px;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .doctor-avatar {
-  width: clamp(60px, 8vw, 80px);
-  aspect-ratio: 1;
+  width: clamp(80px, 12vw, 100px);
+  height: clamp(80px, 12vw, 100px);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 12px;
-  border: 2px solid white;
+  flex-shrink: 0;
+  border: 2px solid var(--color-accent);
   color: white;
   font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.doctor-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.doc-specialty {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.doc-experience {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.doc-bio {
+  font-size: 0.95rem;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.doc-qual {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-primary-light);
 }
 
 /* Stats */
@@ -824,6 +871,8 @@ footer {
   .hero-img-frame { width: 80vw; }
   
   .testimonial-card { padding: 24px; }
+
+  .doctor-card { flex-direction: column; text-align: center; }
 }
 
 /* Specific Mobile Portrait Fixes (320px-430px) */
