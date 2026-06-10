@@ -83,15 +83,15 @@ function initScrollAnimations() {
         });
     }
 
-    // 5. Background Shift Logic - Refined for Light Blue Theme
+    // 5. Background Shift Logic - Synchronized with New Palette
     const sections = [
-        { id: '#hero', color: 'transparent', text: '#0d2137' },
-        { id: '#services', color: 'rgba(232, 244, 253, 0.95)', text: '#1a2f4a' },
-        { id: '#about', color: 'transparent', text: '#1a2f4a' },
-        { id: '#stats', color: 'rgba(221, 238, 249, 0.8)', text: '#0d2137' },
-        { id: '#process', color: 'rgba(232, 244, 253, 0.95)', text: '#1a2f4a' },
-        { id: '#testimonials', color: 'transparent', text: '#1a2f4a' },
-        { id: '#booking', color: 'rgba(232, 244, 253, 0.95)', text: '#1a2f4a' }
+        { id: '#hero', color: 'transparent', text: '#FFFFFF' },
+        { id: '#services', color: '#ffffff', text: '#1a2f4a' },
+        { id: '#about', color: 'transparent', text: '#FFFFFF' },
+        { id: '#stats', color: 'rgba(10, 113, 247, 0.8)', text: '#FFFFFF' },
+        { id: '#process', color: '#ffffff', text: '#1a2f4a' },
+        { id: '#testimonials', color: 'transparent', text: '#FFFFFF' },
+        { id: '#booking', color: '#ffffff', text: '#1a2f4a' }
     ];
 
     sections.forEach(sec => {
