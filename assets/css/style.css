@@ -792,6 +792,11 @@ footer {
   background: var(--bg-dark);
   color: white;
   padding: 80px 0 40px;
+  padding-left: clamp(1.5rem, 5vw, 5rem);
+  padding-right: clamp(1.5rem, 5vw, 5rem);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer-grid {
@@ -836,6 +841,8 @@ footer {
   gap: 20px;
   font-size: 0.9rem;
   opacity: 0.7;
+  padding-left: clamp(1.5rem, 5vw, 5rem);
+  padding-right: clamp(1.5rem, 5vw, 5rem);
 }
 
 .footer-bottom-links { display: flex; gap: 24px; }
