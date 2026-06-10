@@ -792,7 +792,11 @@ input:focus, select:focus, textarea:focus {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
-  color: #FFFFFF;
+  color: #000000 !important;
+}
+
+.clinic-info-text, .clinic-info-text a {
+  color: #000000 !important;
 }
 
 .clinic-info-icon {
