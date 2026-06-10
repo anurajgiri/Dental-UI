@@ -194,30 +194,19 @@ function initBookingForm() {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Form feedback
-        const btn = form.querySelector('.btn-submit');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = 'Sending...';
-        btn.style.pointerEvents = 'none';
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const date = document.getElementById('date').value;
+        const note = document.getElementById('message').value;
 
-        setTimeout(() => {
-            const clinicPhone = '9779741875307';
-            const name = form.querySelector('#name').value;
-            const service = form.querySelector('#service').value;
-            const date = form.querySelector('#date').value;
-            
-            const msg = `Hi Shine Dental, I'm ${name}. I'd like to book ${service} on ${date}.`;
-            const url = `https://wa.me/${clinicPhone}?text=${encodeURIComponent(msg)}`;
-            
-            window.open(url, '_blank');
-            
-            btn.innerHTML = 'Sent!';
-            form.reset();
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.pointerEvents = 'auto';
-            }, 3000);
-        }, 1000);
+        const message = `Hello Shine Dental! Appointment request:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nDate: ${date}\nNote: ${note}`;
+
+        const whatsappNumber = '9779741875307';
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+        
+        form.reset();
     });
 }
