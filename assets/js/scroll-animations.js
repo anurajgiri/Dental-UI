@@ -37,7 +37,7 @@ function initScrollAnimations() {
         });
     });
 
-    // 3. Floating Hero Elements (Parallax)
+    // 3. Floating Hero Elements
     if (!isMobile) {
         gsap.to('.hero-img-frame', {
             y: -50,
@@ -78,15 +78,15 @@ function initScrollAnimations() {
         });
     }
 
-    // 5. Background Shift
+    // 5. Background Shift Logic
     const sections = [
-        { id: '#hero', color: '#4A86D4', text: '#ffffff' },
-        { id: '#services', color: '#ffffff', text: '#0D3D52' },
-        { id: '#about', color: '#4A86D4', text: '#ffffff' },
-        { id: '#stats', color: '#3D78C0', text: '#ffffff' },
-        { id: '#process', color: '#ffffff', text: '#0D3D52' },
-        { id: '#testimonials', color: '#4A86D4', text: '#ffffff' },
-        { id: '#booking', color: '#ffffff', text: '#0D3D52' }
+        { id: '#hero', color: 'transparent', text: '#ffffff' },
+        { id: '#services', color: 'rgba(255,255,255,0.95)', text: '#0D3D52' },
+        { id: '#about', color: 'transparent', text: '#ffffff' },
+        { id: '#stats', color: 'rgba(10, 15, 30, 0.8)', text: '#ffffff' },
+        { id: '#process', color: 'rgba(255,255,255,0.95)', text: '#0D3D52' },
+        { id: '#testimonials', color: 'transparent', text: '#ffffff' },
+        { id: '#booking', color: 'rgba(255,255,255,0.95)', text: '#0D3D52' }
     ];
 
     sections.forEach(sec => {
@@ -99,8 +99,12 @@ function initScrollAnimations() {
             end: 'bottom 50%',
             onToggle: self => {
                 if (self.isActive) {
-                    gsap.to('body', {
+                    gsap.to(el, {
                         backgroundColor: sec.color,
+                        duration: 0.6,
+                        overwrite: 'auto'
+                    });
+                    gsap.to('body', {
                         color: sec.text,
                         duration: 0.6,
                         overwrite: 'auto'
@@ -110,7 +114,7 @@ function initScrollAnimations() {
         });
     });
 
-    // 6. Reveal Animations for Cards
+    // 6. Card Reveal
     gsap.from('.service-card, .process-step', {
         y: 30,
         opacity: 0,
