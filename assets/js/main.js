@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap === 'undefined') {
+        console.error('GSAP is not defined. Please check script load order.');
+        return;
+    }
+    
     initLoader();
     initNavbar();
     initMagneticButtons();

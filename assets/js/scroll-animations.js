@@ -1,4 +1,9 @@
-gsap.registerPlugin(ScrollTrigger);
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        initScrollAnimations();
+    }
+});
 
 function initScrollAnimations() {
     const isMobile = window.innerWidth < 768;
