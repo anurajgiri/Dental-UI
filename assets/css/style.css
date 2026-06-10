@@ -1,29 +1,29 @@
 :root {
-  --color-primary: #4A86D4;
-  --color-primary-dark: #3D78C0;
-  --color-primary-light: #5590D8;
+  --color-primary: #1369f2;
+  --color-primary-dark: #0d59d4;
+  --color-primary-light: #4A86D4;
   --color-accent: #00C4A1;
   --color-accent-warm: #F4A261;
 
-  /* Backgrounds - Updated to Light Blue Theme */
-  --bg-particle: #EBF5FB;
+  /* Backgrounds - Refined Light Blue Theme */
+  --bg-particle: #e8f4fd;
   --bg-hero: transparent;
   --bg-main: transparent;
-  --bg-section: #EBF5FB;
-  --bg-alt: #DDEEFF;
-  --bg-dark-nav: #0a0f1e; /* Keep for Navbar */
-  --bg-footer: #D6EAF8;   /* Slightly darker light blue for footer */
-  --bg-card: #FFFFFF;
+  --bg-section: #e8f4fd;
+  --bg-alt: #ddeef9;
+  --bg-dark-nav: #1369f2; /* Preserved Brand Blue */
+  --bg-footer: #1369f2;   /* Contrast Blue */
+  --bg-card: #ffffff;
 
-  /* Text - Updated for Light Background Visibility */
-  --text-primary: #1a2332;   /* Dark navy for headings */
-  --text-secondary: #4a5568; /* Dark gray for body */
-  --text-on-dark: #FFFFFF;   /* For navbar links */
+  /* Text - Dark Contrast for Readability */
+  --text-primary: #0d2137;   /* Headings */
+  --text-secondary: #1a2f4a; /* Body */
+  --text-on-dark: #FFFFFF;   /* Links on dark backgrounds */
 
   --border-radius: 16px;
   --border-radius-lg: 24px;
   --border-radius-pill: 100px;
-  --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.08);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: all 0.3s ease;
@@ -48,7 +48,7 @@ html, body {
 
 body {
   font-family: var(--font-body);
-  color: var(--text-secondary); /* Default body text color */
+  color: var(--text-secondary);
   line-height: 1.6;
   font-size: clamp(14px, 2vw, 16px);
   cursor: default;
@@ -85,11 +85,11 @@ section {
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   line-height: 1.2;
-  color: var(--text-primary); /* Dark navy for headings */
+  color: var(--text-primary);
 }
 
 p {
-  color: var(--text-secondary); /* Dark gray for body text */
+  color: var(--text-secondary);
 }
 
 a {
@@ -177,7 +177,7 @@ ul {
   z-index: 1001;
 }
 
-/* Navigation - KEEP DARK */
+/* Navigation - FIXED BRAND BLUE */
 nav {
   position: fixed;
   top: 0;
@@ -186,14 +186,14 @@ nav {
   padding: clamp(16px, 3vw, 24px) 0;
   z-index: 1000;
   transition: var(--transition-base);
-  background: rgba(10, 15, 30, 0.95); /* Dark background preserved */
+  background: rgba(19, 105, 242, 0.95); /* #1369f2 specified */
   backdrop-filter: blur(10px);
 }
 
 nav.scrolled {
-  background: rgba(10, 15, 30, 1);
+  background: rgba(19, 105, 242, 1);
   padding: 12px 0;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
 .nav-container {
@@ -207,7 +207,7 @@ nav.scrolled {
   font-family: var(--font-heading);
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: 700;
-  color: #FFFFFF; /* White for dark navbar */
+  color: #FFFFFF;
 }
 
 .logo .diamond {
@@ -222,7 +222,7 @@ nav.scrolled {
 }
 
 .nav-link {
-  color: #FFFFFF; /* White links for dark navbar */
+  color: #FFFFFF;
   font-weight: 500;
   font-size: 0.95rem;
 }
@@ -239,7 +239,7 @@ nav.scrolled {
   font-weight: 500;
 }
 
-/* Hamburger Fix */
+/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -284,9 +284,9 @@ nav.scrolled {
 
 .badge {
   display: inline-block;
-  background: rgba(74, 134, 212, 0.1);
+  background: rgba(19, 105, 242, 0.1);
   color: var(--color-primary);
-  border: 1px solid rgba(74, 134, 212, 0.2);
+  border: 1px solid rgba(19, 105, 242, 0.2);
   font-weight: 500;
   margin-bottom: 24px;
   padding: 6px 16px;
@@ -297,7 +297,6 @@ nav.scrolled {
 #hero h1 {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   margin-bottom: 24px;
-  color: var(--text-primary);
 }
 
 #hero p {
@@ -320,7 +319,7 @@ nav.scrolled {
   padding: 16px 36px;
   border-radius: 100px;
   font-weight: 700;
-  box-shadow: 0 8px 24px rgba(0, 196, 161, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 196, 161, 0.2);
 }
 
 .cta-pill-outline {
@@ -422,7 +421,7 @@ nav.scrolled {
   min-width: 300px;
   flex: 0 0 300px;
   scroll-snap-align: start;
-  background: #FFFFFF;
+  background: var(--bg-card);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -442,7 +441,7 @@ nav.scrolled {
   width: 100%;
   height: 220px;
   overflow: hidden;
-  background-image: linear-gradient(135deg, #00BFA5, #0a4f6e); /* Fallback */
+  background-image: linear-gradient(135deg, #00BFA5, #0a4f6e);
 }
 
 .service-img {
@@ -647,7 +646,7 @@ nav.scrolled {
 
 .step-number {
   font-size: 80px;
-  color: rgba(74, 134, 212, 0.1);
+  color: rgba(19, 105, 242, 0.05);
   position: absolute;
   top: -20px;
   left: 50%;
@@ -798,10 +797,10 @@ input:focus, select:focus, textarea:focus {
   font-size: 1.5rem;
 }
 
-/* Footer - LIGHTER BLUE */
+/* Footer - DARK BRAND BLUE */
 footer {
   background: var(--bg-footer);
-  color: var(--text-secondary);
+  color: #FFFFFF;
   padding: 80px 0 40px;
   padding-left: clamp(1.5rem, 5vw, 5rem);
   padding-right: clamp(1.5rem, 5vw, 5rem);
@@ -819,7 +818,7 @@ footer {
 
 .footer-brand p {
   margin: 20px 0;
-  opacity: 0.8;
+  opacity: 0.9;
   font-size: 0.95rem;
 }
 
@@ -828,31 +827,31 @@ footer {
 .social-icon {
   width: 40px;
   height: 40px;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-primary);
+  color: #FFFFFF;
 }
 
-.footer-col h4 { margin-bottom: 24px; font-size: 1.2rem; color: var(--text-primary); }
+.footer-col h4 { margin-bottom: 24px; font-size: 1.2rem; color: #FFFFFF; }
 
 .footer-col ul li { margin-bottom: 12px; }
 
-.footer-col ul li a { opacity: 0.7; color: var(--text-secondary); }
+.footer-col ul li a { opacity: 0.8; color: #FFFFFF; }
 
 .footer-col ul li a:hover { opacity: 1; color: var(--color-accent); }
 
 .footer-bottom {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
   font-size: 0.9rem;
-  opacity: 0.7;
+  opacity: 0.8;
   padding-left: clamp(1.5rem, 5vw, 5rem);
   padding-right: clamp(1.5rem, 5vw, 5rem);
 }
@@ -861,7 +860,6 @@ footer {
 
 /* MEDIA QUERIES */
 
-/* Tablet & Mobile Layout Collapsing */
 @media (max-width: 1024px) {
   .hero-container, .about-grid, .booking-grid {
     flex-direction: column;

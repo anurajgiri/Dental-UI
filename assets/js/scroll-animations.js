@@ -83,15 +83,15 @@ function initScrollAnimations() {
         });
     }
 
-    // 5. Background Shift Logic - Updated for Light Theme
+    // 5. Background Shift Logic - Refined for Light Blue Theme
     const sections = [
-        { id: '#hero', color: 'transparent', text: '#1a2332' },
-        { id: '#services', color: 'rgba(235, 245, 251, 0.95)', text: '#4a5568' },
-        { id: '#about', color: 'transparent', text: '#4a5568' },
-        { id: '#stats', color: 'rgba(221, 238, 255, 0.8)', text: '#1a2332' },
-        { id: '#process', color: 'rgba(235, 245, 251, 0.95)', text: '#4a5568' },
-        { id: '#testimonials', color: 'transparent', text: '#4a5568' },
-        { id: '#booking', color: 'rgba(235, 245, 251, 0.95)', text: '#4a5568' }
+        { id: '#hero', color: 'transparent', text: '#0d2137' },
+        { id: '#services', color: 'rgba(232, 244, 253, 0.95)', text: '#1a2f4a' },
+        { id: '#about', color: 'transparent', text: '#1a2f4a' },
+        { id: '#stats', color: 'rgba(221, 238, 249, 0.8)', text: '#0d2137' },
+        { id: '#process', color: 'rgba(232, 244, 253, 0.95)', text: '#1a2f4a' },
+        { id: '#testimonials', color: 'transparent', text: '#1a2f4a' },
+        { id: '#booking', color: 'rgba(232, 244, 253, 0.95)', text: '#1a2f4a' }
     ];
 
     sections.forEach(sec => {

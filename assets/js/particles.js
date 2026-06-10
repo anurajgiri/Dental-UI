@@ -20,8 +20,8 @@ class ParticleBackground {
     init() {
         this.onResize();
         this.particles = [];
-        // Updated colors for light background visibility
-        const colors = ['#00BFA5', '#0077B6', '#023E8A'];
+        // Updated colors for light background visibility (Dark Teal/Navy)
+        const colors = ['#0d2137', '#00BFA5', '#0077B6', '#1a2f4a'];
         
         for (let i = 0; i < this.count; i++) {
             this.particles.push({
